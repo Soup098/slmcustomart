@@ -1,0 +1,50 @@
+body{
+    margin: auto;
+    /* border: 1px solid red; */
+    max-width: 1080px;
+}
+
+/* NAVIGATION STYLING */
+nav{
+    /* border: 1px solid black; */
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+}
+
+.logo{
+    /* border: 1px solid blue; */
+    display: flex;
+    align-items: center;
+    width: 30%;
+}
+
+.initials{
+    margin-right: 12px;
+    font-family: "Great Vibes", cursive;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.logo-brand{
+    font-family: "Zalando Sans Expanded", sans-serif;
+    font-size: 1.3rem;
+    font-weight: 100;
+}
+
+.nav-items{
+    display: flex;
+    /* border: 1px solid red; */
+    width: 100%;
+    justify-content: space-between;
+}
+.nav-items > a{
+    text-decoration: none;
+    font-family: sans-serif;
+    color: black;
+    /* border: 1px solid green; */
+    padding: 8px 10px
+}
+.nav-items > a:hover{
+    background-color: #45aba5;
+}
