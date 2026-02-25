@@ -15,11 +15,11 @@ main{
 /* NAVIGATION STYLING */
 /* ****************** */
 nav{
-    /* border: 1px solid black; */
     padding: 1rem;
     display: flex;
     align-items: center;
     margin: 0 20px;
+    /* max-width: 100%; */
     /* justify-content: space-between; */
 }
 
@@ -126,7 +126,8 @@ nav{
 /* ***************** */
 
 .slideshow{
-    height: 480px;
+    /* border: 2px solid green; */
+    height: 600px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -226,7 +227,7 @@ nav{
 .gallery > img{
     min-width: 100px;
     max-width: 360px;
-    border: 2px solid red;
+    
 }
 
 /* ******************** */
