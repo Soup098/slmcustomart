@@ -16,33 +16,49 @@
     <body>
         <main>
             <nav>
-            <div class="logo">
-                <span class="initials">SLM </span>
-                <h1 class="logo-brand">Custom Art</h1>
-            </div>
-            <div class="nav-items">
-                <a href="index.html">HOME</a>
-                <a href="">GALLERY</a>
-                <a href="">PERSONALIZATION</a>
-                <a href="">ABOUT</a>
-                <a href="">ORDERING</a>
-                <a href="">CONTACT</a>
-            </div>
-        </nav>
+                <div class="logo">
+                    <span class="initials">SLM </span>
+                    <h1 class="logo-brand">Custom Art</h1>
+                </div>
+                <div class="nav-items">
+                    <a href="index.html">HOME</a>
 
+                    <div class="nav-dropdown">
+                        <a href="gallery.html">GALLERY</a>
+                        <div class="dropdown-menu">
+                            <a href="homes-gallery.html">Homes Gallery</a>
+                            <a href="pets-gallery.html">Pets Gallery</a>
+                        </div>
+                    </div>
+
+                    <a href="">PERSONALIZATION</a>
+                    <a href="about.html">ABOUT</a>
+                    <a href="">ORDERING</a>
+                    <a href="">CONTACT</a>
+                </div>
+            </nav>
+
+        <section class="main-hero">
+            <div class="slideshow" id="home-slideshow">
+                <div class="hero-content">
+                    <h1>Custom Watercolor Portraits</h1>
+                    <p>Homes, pets, and memories preserved forever</p>
+                </div>
+            </div>
+        </section>
         <section class="hero-section">
             <div class="home-portrait-hero">
                 <div class="home-image-container">
                     <img class="home-hero-img" src="./images/homes/33 Chesley Dr..jpg" alt="">
                 </div>
                 <div class="home-text-container">
-                    <p class="house-hero-text">For many of us, our homes hold a special place in our hearts and represent a source of genuine happiness. If you're searching for a unique and meaningful gift for a loved one or special occasion, consider a stunning watercolor home portrait. It's a heartfelt way to capture the beauty and personality of a beloved home and create a lasting memory for years to come.</p>
+                    <p class="home-image-text">For many of us, our homes hold a special place in our hearts and represent a source of genuine happiness. If you're searching for a unique and meaningful gift for a loved one or special occasion, consider a stunning watercolor home portrait. It's a heartfelt way to capture the beauty and personality of a beloved home and create a lasting memory for years to come.</p>
                     <a href="" class="order-btn">Order a home portrait now!</a>
                 </div>
             </div>
             <div class="pet-portrait-hero">
                 <div class="pet-text-container">
-                    <p class="pet-hero-text">For many of us, our homes hold a special place in our hearts and represent a source of genuine happiness. If you're searching for a unique and meaningful gift for a loved one or special occasion, consider a stunning watercolor home portrait. It's a heartfelt way to capture the beauty and personality of a beloved home and create a lasting memory for years to come.</p>
+                    <p class="pet-image-text">For many of us, our homes hold a special place in our hearts and represent a source of genuine happiness. If you're searching for a unique and meaningful gift for a loved one or special occasion, consider a stunning watercolor home portrait. It's a heartfelt way to capture the beauty and personality of a beloved home and create a lasting memory for years to come.</p>
                     <a href="" class="order-btn">Order a home portrait now!</a>
                 </div>
                 <div class="pet-image-container">
@@ -50,10 +66,13 @@
                 </div>
             </div>
         </section>
+        <footer>
+            <p>© 2026 SLM Custom Art</p>
+        </footer>
 
         </main>
        
         
-        <!-- <script src="" async defer></script> -->
+        <script src="index.js"></script>
     </body>
 </html>
