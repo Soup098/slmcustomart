@@ -3,13 +3,15 @@ html{
 }
 body{
     margin: 0;
-    background-color: #e8f1ef;
+    background-color: #93B3A6;
+    
 }
 main{
     margin: auto;
     max-width: 1080px;
     background-color: #ffffff;
     font-family: sans-serif;
+    box-shadow: 0 0 2px black;
 }
 /* ****************** */
 /* NAVIGATION STYLING */
