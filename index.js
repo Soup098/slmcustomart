@@ -13,15 +13,24 @@ const images = [
     "./images/pets/Shady.jpg",
 ]
 
-const slideshow = document.getElementById("home-slideshow")
+const slides = document.querySelectorAll(".slide")
 
-let index = Math.floor(Math.random() * images.length)
+let current = 0
+let next = 1
+
+slides[current].style.backgroundImage =
+    `url("${images[Math.floor(Math.random()*images.length)]}")`
 
 function changeSlide(){
-    slideshow.style.backgroundImage = `url("${images[index]}")`
-    index = Math.floor(Math.random() * images.length)
+
+    slides[next].style.backgroundImage =
+        `url("${images[Math.floor(Math.random()*images.length)]}")`
+
+    slides[next].classList.add("active")
+    slides[current].classList.remove("active")
+
+    current = next
+    next = (next + 1) % slides.length
 }
 
-changeSlide()
-
-setInterval(changeSlide, 5000)
+setInterval(changeSlide, 5500)
