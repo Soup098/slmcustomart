@@ -6,7 +6,6 @@ const images = [
     "./images/homes/Final 1.jpg",
     "./images/homes/Portrait-of-Mildred-©-2022.jpg",
     "./images/pets/Lando.jpg",
-    "./images/pets/Mica finished.jpg",
     "./images/pets/Mom and Foal.jpg",
     "./images/pets/Obi.jpg",
     "./images/pets/Sammi.jpg",
