@@ -1,4 +1,5 @@
 const images = [
+    "./images/homes/crystal-sam.jpg",
     "./images/homes/4-27-25 Final.jpg",
     "./images/homes/33 Chesley Dr..jpg",
     "./images/homes/58 Varney Rd..jpg",
@@ -10,6 +11,7 @@ const images = [
     "./images/pets/Obi.jpg",
     "./images/pets/Sammi.jpg",
     "./images/pets/Shady.jpg",
+    "./images/pets/Margy.jpg"
 ]
 
 const slides = document.querySelectorAll(".slide")

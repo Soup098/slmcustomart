@@ -3,13 +3,13 @@ html{
 }
 body{
     margin: 0;
-    background-color: #93B3A6;
-    
+    background-color: #dfe6da;
+    font-family: "Playfair Display", serif;
 }
 main{
     margin: auto;
-    max-width: 1080px;
-    background-color: #ffffff;
+    max-width: 1260px;
+    background-color: #fdfdfc;
     font-family: sans-serif;
     box-shadow: 0 0 2px black;
 }
@@ -22,37 +22,40 @@ nav{
     align-items: center;
     margin: 0 20px;
     justify-content: space-between;
+    
 }
-
 .logo{
     border-right: 1px solid black;
+    width: 15%;
     display: flex;
     align-items: center;
     letter-spacing: normal;
     padding-right: 10px;
 }
-
 .initials{
     margin-right: 12px;
     font-family: "Great Vibes", cursive;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 500;
 }
-
 .logo-brand{
     font-family: "Zalando Sans Expanded", sans-serif;
     font-size: 1.3rem;
     font-weight: 100;
 }
-
 .nav-items{
+    font-size: 1.2rem;
+    width: 85%;
     display: flex;
-    gap: 28px;
+    justify-content: space-around;
+    /* gap: 72px; */
 }
 .nav-items > a{
     position: relative;
     text-decoration: none;
     font-family: sans-serif;
+    letter-spacing: 1px;
+    font-size: 1.1rem;
     color: black;
     padding: 8px 10px
 }
@@ -69,6 +72,9 @@ nav{
 .nav-items a:hover::after{
     width:100%;
 }
+a.active-nav{
+    color: #6b9080;
+}
 
 /* ************ */
 /* NAV DROPDOWN */
@@ -82,6 +88,8 @@ nav{
     position: relative;
     text-decoration: none;
     font-family: sans-serif;
+    letter-spacing: 1px;
+    font-size: 1.1rem;
     color: black;
     padding: 8px 10px
 }
@@ -115,7 +123,6 @@ nav{
     transform: translateY(0);
     pointer-events: auto;
 }
-
 .page-title{
     text-align: center;
     font-family: "Great Vibes", cursive;
@@ -176,12 +183,14 @@ nav{
     text-shadow: 0 3px 12px rgba(0,0,0,0.6);
 }
 .hero-content > h1{
-    font-size: 4rem;
+    font-size: 3.5rem;
+    letter-spacing: 1px;
     margin-bottom: 16px;
     font-weight: 600;
 }
 .hero-content > p{
-    font-size: 1.8rem;
+    font-size: 1.4rem;
+    /* opacity: 0.9; */
     font-weight: 300;
 }
 .hero-buttons-container{
@@ -408,4 +417,77 @@ nav{
 
 .pricing-table td:first-child {
     font-weight: 500;
+}
+
+/* ********************** */
+/* CONTACT SECTION STYLES */
+/* ********************** */
+.order-container {
+    max-width: 700px;
+    margin: auto;
+}
+.order-title {
+    font-family: "Great Vibes", cursive;
+    font-size: 2.5rem;
+    font-weight: 200;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.order-subtitle {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #575757;
+    font-size: 1.2rem;
+}
+.order-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+.form-row .form-group {
+    flex: 1;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+.form-group label {
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+    color: #444;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+    background-color: #a4c7b8;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #6b9080;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 2px rgba(107,144,128,0.2);
+}
+.order-submit {
+    margin-top: 20px;
+    padding: 16px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    background-color: #6b9080;
+    color: white;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+.order-submit:hover {
+    background-color: #4f6f63;
 }
