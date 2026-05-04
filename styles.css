@@ -22,7 +22,10 @@ nav{
     align-items: center;
     margin: 0 20px;
     justify-content: space-between;
-    
+
+    background: #fdfdfb;
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 .logo{
     border-right: 1px solid black;
@@ -134,7 +137,6 @@ a.active-nav{
 /* ***************** */
 /* main hero styling */
 /* ***************** */
-
 .slideshow{
     height: 600px;
     position: relative;
@@ -144,6 +146,7 @@ a.active-nav{
     justify-content: center;
 }
 .slide{
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4));
     position: absolute;
     inset: 0;
     background-size: cover;
@@ -211,6 +214,7 @@ a.active-nav{
     font-weight: 600;
     transition: all 0.2s ease;
     text-overflow: 0;
+    
 }
 
 /* Primary Button (Order Portrait) */
@@ -222,8 +226,8 @@ a.active-nav{
 
 /* Secondary Button (View Gallery) */
 .btn-secondary {
-    background-color: whitesmoke;
-    color: #333;
+    border: 1px solid whitesmoke;
+    color: whitesmoke;
     
 }
 
