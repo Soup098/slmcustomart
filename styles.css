@@ -10,7 +10,7 @@ main{
     margin: auto;
     max-width: 1260px;
     background-color: #fdfdfc;
-    font-family: sans-serif;
+    font-family: "Playfair Display", serif;
     box-shadow: 0 0 2px black;
 }
 /* ****************** */
@@ -42,9 +42,9 @@ nav{
     font-weight: 500;
 }
 .logo-brand{
-    font-family: "Zalando Sans Expanded", sans-serif;
+    font-family: "Playfair Display", serif;
     font-size: 1.3rem;
-    font-weight: 100;
+    font-weight: 300;
 }
 .nav-items{
     font-size: 1.2rem;
@@ -56,7 +56,8 @@ nav{
 .nav-items > a{
     position: relative;
     text-decoration: none;
-    font-family: sans-serif;
+    font-family: "Playfair Display", serif;
+    font-weight: 500;
     letter-spacing: 1px;
     font-size: 1.1rem;
     color: black;
@@ -90,7 +91,8 @@ a.active-nav{
 .nav-dropdown a{
     position: relative;
     text-decoration: none;
-    font-family: sans-serif;
+    font-family: "Playfair Display", serif;
+    font-weight: 500;
     letter-spacing: 1px;
     font-size: 1.1rem;
     color: black;
@@ -116,7 +118,8 @@ a.active-nav{
     padding: 10px 16px;
     text-decoration: none;
     color: black;
-    font-family: sans-serif;
+    font-family: "Playfair Display", serif;
+    font-weight: 500;
 }
 .dropdown-menu a:hover{
     background: #f4f4f4;
@@ -469,7 +472,7 @@ a.active-nav{
 .form-group textarea {
     padding: 12px 14px;
     border: 1px solid #ddd;
-    background-color: #a4c7b8;
+    background-color: #f9f9f7;
     font-size: 1rem;
     transition: all 0.2s ease;
 }
