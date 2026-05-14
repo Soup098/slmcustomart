@@ -3,15 +3,15 @@ html{
 }
 body{
     margin: 0;
-    background-color: #dfe6da;
+    background-color: #fcf5eb;
     font-family: "Playfair Display", serif;
 }
 main{
     margin: auto;
     max-width: 1260px;
-    background-color: #fdfdfc;
+    background-color: #fcf5eb;
     font-family: "Playfair Display", serif;
-    box-shadow: 0 0 2px black;
+    /* box-shadow: 0 0 2px black; */
 }
 /* ****************** */
 /* NAVIGATION STYLING */
@@ -22,9 +22,7 @@ nav{
     align-items: center;
     margin: 0 20px;
     justify-content: space-between;
-
-    background: #fdfdfb;
-
+    background: #fcf5eb;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 .logo{
@@ -102,7 +100,7 @@ a.active-nav{
     position: absolute;
     top: 100%;
     left: 0;
-    background: white;
+    background: #fcf5eb;
     min-width: 160px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     opacity: 0;
@@ -122,7 +120,7 @@ a.active-nav{
     font-weight: 500;
 }
 .dropdown-menu a:hover{
-    background: #f4f4f4;
+    background: #f0e2ce;
 }
 .nav-dropdown:hover .dropdown-menu{
     opacity: 1;
@@ -178,7 +176,7 @@ a.active-nav{
     z-index: 2;
 }
 .hero-content{
-    font-family: "Playfair Display", serif;
+    font-family: "Fraunces", serif;
     line-height: 1.3;
     display: flex;
     flex-direction: column;
@@ -213,7 +211,7 @@ a.active-nav{
 .btn {
     text-decoration: none;
     padding: 14px 28px;
-    border-radius: 8px;
+    border-radius: 100px;
     font-weight: 600;
     transition: all 0.2s ease;
     text-overflow: 0;
@@ -236,13 +234,15 @@ a.active-nav{
 
 /* Hover Effects */
 .btn-primary:hover {
+    background-color: #4f6f63;
     transform: translateY(-1px);
     box-shadow: 0 12px 24px rgba(0,0,0,0.6);
 }
 
 .btn-secondary:hover {
-    background-color: white;
-    color: #6b9080;
+    background-color: #6b9080;
+    border: 1px solid #6b9080;
+    color: whitesmoke;
     transform: translateY(-1px);
 }
 
@@ -291,7 +291,7 @@ a.active-nav{
     color: white;
     background-color: #6b9080;
     padding: 12px 20px;
-    border-radius: 6px;
+    border-radius: 100px;
     box-shadow: 1px 1px 4px #000000;
 }
 .order-btn:hover{
@@ -389,6 +389,9 @@ a.active-nav{
     padding: 80px 20px;
     max-width: 900px;
     margin: 0 auto;
+    background-color: whitesmoke;
+    box-shadow: 1px 1px 5px gray;
+    border-radius: 42px;
 }
 
 .pricing-section h2 {
