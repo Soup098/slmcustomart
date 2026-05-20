@@ -311,7 +311,7 @@ a.active-nav{
 .gallery > img{
     min-width: 100px;
     max-width: 360px;
-    
+    box-shadow: 0 4px 14px rgba(58, 42, 31, 0.08);
 }
 
 /* ******************** */
