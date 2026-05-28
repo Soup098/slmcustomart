@@ -27,3 +27,15 @@ PAGES (NAV):
 	* single portrait
 	* prints(???)
 * Contact
+
+
+current working model. no form functionality. this is just a first working iteration
+current wins:
+card images on gallery
+slideshow
+meet artist and process
+
+next steps:
+database connection
+form functionality
+admin page for adding images to gallery
