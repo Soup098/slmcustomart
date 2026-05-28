@@ -39,3 +39,16 @@ next steps:
 database connection
 form functionality
 admin page for adding images to gallery
+
+
+Talk with mom:
+
+process page for both Pet and Homes
+housed water color, pets are not.
+change main hero
+swap splash page cards on bottom so pet comes first.
+start slideshow with pet. and separate them so they are not blurry
+mom is going to get more concrete prices
+* at bottom of price table. "custom sizes available apon request"
+flip pet and home portraits in gallery drop down.
+
