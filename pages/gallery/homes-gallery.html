@@ -49,44 +49,39 @@
                 </div>
             </nav>
             <section class="page-title">Home Potraits</section>
-            <section class="gallery">
-                <figure class="card">
-                    <img src="/images/homes/red-brick-house.jpg"
-                        alt="red brick house" loading="lazy">
-                    <figcaption class="card-title">Red Brick House</figcaption>
-                </figure>
-                <figure class="card">
-                    <img src="/images/homes/chesley-dr.jpg"
-                        alt="chelsey Dr" loading="lazy">
-                    <figcaption class="card-title">Chelsey Dr</figcaption>
-                </figure>
-                <figure class="card">
-                    <img src="/images/homes/varney-rd.jpg"
-                        alt="varney rd" loading="lazy">
-                    <figcaption class="card-title">varney rd</figcaption>
-                </figure>
-                <figure class="card">
-                    <img src="/images/homes/timber-lane.jpg"
-                        alt="Timber Lane" loading="lazy">
-                    <figcaption class="card-title">Timber Lane</figcaption>
-                </figure>
-                <figure class="card">
-                    <img src="/images/homes/house.jpg"
-                        alt="house" loading="lazy">
-                    <figcaption class="card-title">A house</figcaption>
-                </figure>
-                <figure class="card">
-                    <img src="/images/homes/mildred.jpg"
-                        alt="Mildred" loading="lazy">
-                    <figcaption class="card-title">Mildred</figcaption>
-                </figure>
-                <figure class="card">
-                    <img src="/images/homes/sam-and-crystal.jpg"
-                        alt="sam and crystals house" loading="lazy">
-                    <figcaption class="card-title">Sam and Crystal</figcaption>
-                </figure>
+            <section class="gallery" id="gallery">
+                <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+                <script>
+                    const SUPABASE_URL = "https://eklumrribtzzkxssuojv.supabase.co"
+                    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVrbHVtcnJpYnR6emt4c3N1b2p2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwMTc2NzEsImV4cCI6MjA5NTU5MzY3MX0.w-33diostKvrJC3Yq-cq85EDEfFZ66CJmmXHXjEBi70"
+                    const db = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+                    const CATEGORY = "home"
+
+                    async function loadGallery(){
+                        const grid = document.getElementById("gallery")
+                        const { data, error } = await db
+                            .from("portraits")
+                            .select("*")
+                            .eq("category", CATEGORY)
+                            .order("display_order")
+                        
+                        if(error) {
+                            console.log(error)
+                            return
+                        }
+
+                        grid.innerHTML = data.map(piece => `
+                            <figure class="card">
+                                <img src="${piece.image_url}" alt="portrait: ${piece.title}" loading="lazy">
+                                <figcaption class="card-title">${piece.title}</figcaption>
+                            </figure>
+                        `).join("")
+                    }
+
+                    loadGallery()
+                </script>
             </section>
         </main>
-        <script src="index.js"></script>
+        <script src="/index.js"></script>
     </body>
 </html>

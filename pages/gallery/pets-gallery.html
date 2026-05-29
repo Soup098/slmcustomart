@@ -49,44 +49,39 @@
                 </div>
             </nav>
             <section class="page-title">Pet Portraits</section>
-            <section class="gallery">
-                <figure class="card">
-                    <img src="/images/pets/lando.jpg"
-                        alt="lando" loading="lazy">
-                    <figcaption class="card-title">Lando</figcaption>
-                </figure>
-                <figure class="card">
-                    <img src="/images/pets/mica.jpg"
-                        alt="Mica" loading="lazy">
-                    <figcaption class="card-title">Mica</figcaption>
-                </figure>
-                <figure class="card">
-                    <img src="/images/pets/mom-and-foal.jpg"
-                        alt="mom and foal" loading="lazy">
-                    <figcaption class="card-title">Mom and Foal</figcaption>
-                </figure>
-                <figure class="card">
-                    <img src="/images/pets/obi.jpg"
-                        alt="Obi" loading="lazy">
-                    <figcaption class="card-title">Obi</figcaption>
-                </figure>
-                <figure class="card">
-                    <img src="/images/pets/sammi.jpg"
-                        alt="Sammi" loading="lazy">
-                    <figcaption class="card-title">Sammi</figcaption>
-                </figure>
-                <figure class="card">
-                    <img src="/images/pets/shady.jpg"
-                        alt="Shady" loading="lazy">
-                    <figcaption class="card-title">Shady</figcaption>
-                </figure>
-                <figure class="card">
-                    <img src="/images/pets/margy.jpg"
-                        alt="Margy" loading="lazy">
-                    <figcaption class="card-title">Margy</figcaption>
-                </figure>
+            <section class="gallery" id="gallery">
+                <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+                <script>
+                    const SUPABASE_URL = "https://eklumrribtzzkxssuojv.supabase.co"
+                    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVrbHVtcnJpYnR6emt4c3N1b2p2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAwMTc2NzEsImV4cCI6MjA5NTU5MzY3MX0.w-33diostKvrJC3Yq-cq85EDEfFZ66CJmmXHXjEBi70"
+                    const db = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+                    const CATEGORY = "pet"
+
+                    async function loadGallery(){
+                        const grid = document.getElementById("gallery")
+                        const { data, error } = await db
+                            .from("portraits")
+                            .select("*")
+                            .eq("category", CATEGORY)
+                            .order("display_order")
+                        
+                        if(error) {
+                            console.log(error)
+                            return
+                        }
+
+                        grid.innerHTML = data.map(piece => `
+                            <figure class="card">
+                                <img src="${piece.image_url}" alt="portrait: ${piece.title}" loading="lazy">
+                                <figcaption class="card-title">${piece.title}</figcaption>
+                            </figure>
+                        `).join("")
+                    }
+
+                    loadGallery()
+                </script>
             </section>
         </main>
-        <script src="index.js"></script>
+        <script src="/index.js"></script>
     </body>
 </html>
