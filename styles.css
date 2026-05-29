@@ -33,6 +33,9 @@ nav{
     letter-spacing: normal;
     padding-right: 10px;
 }
+.logo > img{
+    width: 100%;
+}
 .initials{
     margin-right: 12px;
     font-family: "Great Vibes", cursive;
