@@ -1,17 +1,17 @@
 const images = [
-    "./images/homes/sam-and-crystal.jpg",
-    "./images/homes/red-brick-house.jpg",
-    "./images/homes/chesley-dr.jpg",
-    "./images/homes/varney-rd.jpg",
-    "./images/homes/timber-lane.jpg",
-    "./images/homes/house.jpg",
-    "./images/homes/mildred.jpg",
-    "./images/pets/lando.jpg",
-    "./images/pets/mom-and-foal.jpg",
-    "./images/pets/obi.jpg",
-    "./images/pets/sammi.jpg",
-    "./images/pets/shady.jpg",
-    "./images/pets/margy.jpg"
+    "./images/hero-images/23-high-st.jpg",
+    "./images/hero-images/33-chesley-dr.jpg",
+    "./images/hero-images/58-varney-rd.jpg",
+    "./images/hero-images/394-timber-lane.jpg",
+    "./images/hero-images/arneil.jpg",
+    "./images/hero-images/boba.jpg",
+    "./images/hero-images/ellowyn.jpg",
+    "./images/hero-images/margie.jpg",
+    "./images/hero-images/mom-and-foal.jpg",
+    "./images/hero-images/obi.jpg",
+    "./images/hero-images/odonnel-house-barrington.jpg",
+    "./images/hero-images/sammi.jpg",
+    "./images/hero-images/shady-cropped.jpg"
 ]
 
 const slides = document.querySelectorAll(".slide")
