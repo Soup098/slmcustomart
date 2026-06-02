@@ -14,24 +14,24 @@ const images = [
     "./images/pets/margy.jpg"
 ]
 
-const slides = document.querySelectorAll(".slide")
+const slide = document.querySelectorAll(".slide")
 
 let current = 0
 let next = 1
 
-slides[current].style.backgroundImage =
+slide[current].style.backgroundImage =
     `url("${images[Math.floor(Math.random()*images.length)]}")`
 
 function changeSlide(){
 
-    slides[next].style.backgroundImage =
+    slide[next].style.backgroundImage =
         `url("${images[Math.floor(Math.random()*images.length)]}")`
 
-    slides[next].classList.add("active")
-    slides[current].classList.remove("active")
+    slide[next].classList.add("active")
+    slide[current].classList.remove("active")
 
     current = next
-    next = (next + 1) % slides.length
+    next = (next + 1) % slide.length
 }
 
 setInterval(changeSlide, 5500)
