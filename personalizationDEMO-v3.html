@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>SlmCustomArt — Personalization (Masonry)</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/styles.css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
+        <style>
+            /* ************************************** */
+            /* PERSONALIZATION — 2-COLUMN MASONRY     */
+            /* ************************************** */
+
+            .person-intro{
+                max-width: 760px;
+                margin: 0 auto 24px;
+                text-align: center;
+                font-size: 1.25rem;
+                font-weight: 200;
+                line-height: 1.6;
+                color: #444;
+            }
+
+            .masonry{
+                column-count: 2;
+                column-gap: 28px;
+                padding: 20px 40px 60px;
+                max-width: 1100px;
+                margin: 0 auto;
+            }
+
+            .m-card{
+                break-inside: avoid;
+                margin-bottom: 28px;
+                background: #ffffff;
+                border-radius: 12px;
+                overflow: hidden;
+                box-shadow: 0 6px 18px rgba(58, 42, 31, 0.12);
+                transition: transform .2s ease, box-shadow .2s ease;
+            }
+            .m-card:hover{
+                transform: translateY(-4px);
+                box-shadow: 0 14px 30px rgba(58, 42, 31, 0.2);
+            }
+            .m-card img{
+                display: block;
+                width: 100%;
+                object-fit: cover;
+            }
+            .m-body{ padding: 22px 26px 26px; }
+
+            .m-eyebrow{
+                font-family: "Playfair Display", serif;
+                text-transform: uppercase;
+                letter-spacing: 3px;
+                font-size: 0.7rem;
+                color: #6b9080;
+            }
+            .m-title{
+                font-family: "Great Vibes", cursive;
+                font-size: 2.3rem;
+                font-weight: 400;
+                margin: 2px 0 12px;
+                color: #2b2b2b;
+            }
+            .m-text{
+                font-size: 1.08rem;
+                font-weight: 200;
+                line-height: 1.7;
+                color: #3a3a3a;
+                margin: 0 0 18px;
+            }
+            .m-details-label{
+                font-family: "Playfair Display", serif;
+                font-size: 0.72rem;
+                letter-spacing: 1.5px;
+                text-transform: uppercase;
+                color: #9a9a9a;
+                margin-bottom: 9px;
+            }
+            .chips{ display: flex; flex-wrap: wrap; gap: 9px; }
+            .chip{
+                font-family: "Playfair Display", serif;
+                font-size: 0.9rem;
+                color: #4f6f63;
+                background: #eef3f0;
+                border: 1px solid #d8e4de;
+                padding: 5px 13px;
+                border-radius: 100px;
+            }
+
+            /* CTA card sits inside the masonry flow */
+            .m-cta{
+                break-inside: avoid;
+                margin-bottom: 28px;
+                background: #f3ead9;
+                border-radius: 12px;
+                padding: 36px 28px;
+                text-align: center;
+            }
+            .m-cta h2{
+                font-family: "Great Vibes", cursive;
+                font-size: 2.2rem;
+                font-weight: 400;
+                margin: 0 0 10px;
+            }
+            .m-cta p{
+                font-size: 1.08rem;
+                font-weight: 200;
+                color: #555;
+                margin: 0 auto 22px;
+                line-height: 1.6;
+            }
+
+            @media (max-width: 760px){
+                .masonry{ column-count: 1; padding: 10px 18px 40px; }
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <div class="main-img-container">
+                <img class="main-img" src="/images/logos/logo-2-transparent.png" alt="SLM Custom Art">
+            </div>
+
+            <nav>
+                <div class="nav-items">
+                    <a href="/index.html">HOME</a>
+                    <div class="nav-dropdown">
+                        <a href="#">GALLERY</a>
+                        <div class="dropdown-menu">
+                            <a href="/pages/gallery/homes-gallery.html">Home Portraits</a>
+                            <a href="/pages/gallery/pets-gallery.html">Pet Portraits</a>
+                        </div>
+                    </div>
+                    <div class="nav-dropdown">
+                        <a href="">ABOUT</a>
+                        <div class="dropdown-menu">
+                            <a href="/pages/about/artist.html">Meet The Artist</a>
+                            <a href="/pages/about/process.html">Process</a>
+                            <a href="/pages/personalization.html" class="active-nav">Personalization</a>
+                        </div>
+                    </div>
+                    <div class="nav-dropdown">
+                        <a href="">ORDERING</a>
+                        <div class="dropdown-menu">
+                            <a href="/pages/ordering/how-to-order.html">How To</a>
+                            <a href="/pages/ordering/photo-tips.html">Photo Tips</a>
+                            <a href="/pages/ordering/pricing.html">Pricing</a>
+                        </div>
+                    </div>
+                    <a href="/pages/contact.html">CONTACT</a>
+                </div>
+            </nav>
+
+            <section>
+                <h1 class="person-title">It’s the little things that make a big impact.</h1>
+                <p class="person-intro">
+                    Every portrait carries a story. Before a single brushstroke, I learn what
+                    makes a home or a moment matter to the people who live it — then I weave
+                    those details into the painting.
+                </p>
+
+                <div class="masonry">
+
+                    <!-- Card 1 -->
+                    <article class="m-card">
+                        <img src="/images/personalization/person-home-1.avif" alt="Watercolor portrait of a lakeside summer cottage with hammock and whirligig">
+                        <div class="m-body">
+                            <span class="m-eyebrow">A Lifetime of Summers</span>
+                            <h2 class="m-title">The Summer Cottage</h2>
+                            <p class="m-text">
+                                I painted this for a man who has cherished his summers at this cottage
+                                for most of his life. To capture his family’s love for the home, I
+                                included the hammock, the colorful bicycle whirligig, and a few ducks.
+                                While 10–20 ducks usually visit for corn, I kept them minimal so the
+                                message of love stayed clear.
+                            </p>
+                            <div class="m-details-label">Personal touches added</div>
+                            <div class="chips">
+                                <span class="chip">The hammock</span>
+                                <span class="chip">Bicycle whirligig</span>
+                                <span class="chip">Visiting ducks</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 2 -->
+                    <article class="m-card">
+                        <img src="/images/homes/varney-rd.jpg" alt="Portrait of a family home with American flag and flagpole">
+                        <div class="m-body">
+                            <span class="m-eyebrow">Home, Already Loved</span>
+                            <h2 class="m-title">A Military Family’s Home</h2>
+                            <p class="m-text">
+                                I painted this for a military family who had just purchased this lovely
+                                home. I included the flag and pole already on the property — a detail
+                                that mattered deeply to them. The birds came from the buyers’ request
+                                to honor the feathered residents who already called the house home.
+                            </p>
+                            <div class="m-details-label">Personal touches added</div>
+                            <div class="chips">
+                                <span class="chip">Flag &amp; flagpole</span>
+                                <span class="chip">Resident birds</span>
+                                <span class="chip">Existing landscaping</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- CTA card -->
+                    <div class="m-cta">
+                        <h2>Your story, painted in.</h2>
+                        <p>
+                            A porch swing, a garden, a pet in the window? Tell me about it — those
+                            little things are what make your portrait truly yours.
+                        </p>
+                        <a href="/pages/contact.html" class="order-btn">Order Your Custom Portrait</a>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <article class="m-card">
+                        <img src="/images/homes/chesley-dr.jpg" alt="Portrait of a lakeside camp with the family's boat on the water">
+                        <div class="m-body">
+                            <span class="m-eyebrow">More Than a House</span>
+                            <h2 class="m-title">The Lake Camp</h2>
+                            <p class="m-text">
+                                I painted this for very good friends who have a summer “camp” on the
+                                lake. It isn’t a home portrait, but it’s a hugely important part of
+                                their lives. The boat on the water is their own — and although the
+                                people aboard aren’t recognizable from a distance, they know exactly
+                                who they are. It’s all about the little touches.
+                            </p>
+                            <div class="m-details-label">Personal touches added</div>
+                            <div class="chips">
+                                <span class="chip">Their own boat</span>
+                                <span class="chip">Family on board</span>
+                                <span class="chip">The lakefront</span>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+
+            </section>
+
+            <footer>
+                <p>© 2026 SLM Custom Art</p>
+            </footer>
+        </main>
+
+        <script src="index.js"></script>
+    </body>
+</html>

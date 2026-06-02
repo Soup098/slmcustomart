@@ -3,8 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>SlmCustomArt</title>
-        <!-- <meta name="description" content=""> -->
+        <title>SlmCustomArt — Personalization (Quiet)</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/styles.css">
 
@@ -12,11 +11,132 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
 
+        <style>
+            /* ************************************** */
+            /* PERSONALIZATION — QUIET / NO-FRAME     */
+            /* ************************************** */
+
+            .person-intro{
+                max-width: 760px;
+                margin: 0 auto 10px;
+                text-align: center;
+                font-size: 1.25rem;
+                font-weight: 200;
+                line-height: 1.6;
+                color: #444;
+            }
+
+            .story-list{
+                display: flex;
+                flex-direction: column;
+                gap: 96px;
+                padding: 40px 40px 60px;
+                max-width: 1080px;
+                margin: 0 auto;
+            }
+
+            .story{
+                display: flex;
+                align-items: center;
+                gap: 56px;
+            }
+            .story:nth-child(even){ flex-direction: row-reverse; }
+
+            /* soft image, no frame */
+            .story-art{ flex: 0 0 48%; }
+            .story-art img{
+                display: block;
+                width: 100%;
+                aspect-ratio: 4 / 3;
+                object-fit: cover;
+                border-radius: 4px;
+                box-shadow: 0 14px 30px rgba(58, 42, 31, 0.16);
+            }
+
+            .story-panel{ flex: 1 1 52%; }
+
+            .story-eyebrow{
+                font-family: "Playfair Display", serif;
+                text-transform: uppercase;
+                letter-spacing: 3px;
+                font-size: 0.72rem;
+                color: #6b9080;
+                margin-bottom: 4px;
+            }
+            .story-title{
+                font-family: "Great Vibes", cursive;
+                font-size: 2.6rem;
+                font-weight: 400;
+                margin: 0 0 14px;
+                color: #2b2b2b;
+            }
+            .story-text{
+                font-size: 1.14rem;
+                font-weight: 200;
+                line-height: 1.75;
+                color: #3a3a3a;
+                margin: 0 0 22px;
+            }
+
+            /* details as a quiet inline list, not chips */
+            .story-details{
+                border-top: 1px solid #e4dccd;
+                padding-top: 16px;
+            }
+            .story-details-label{
+                font-family: "Playfair Display", serif;
+                font-size: 0.74rem;
+                letter-spacing: 1.5px;
+                text-transform: uppercase;
+                color: #9a9a9a;
+                margin-bottom: 6px;
+            }
+            .story-details-items{
+                font-family: "Playfair Display", serif;
+                font-size: 1.02rem;
+                color: #4f6f63;
+                line-height: 1.5;
+            }
+            .story-details-items span:not(:last-child)::after{
+                content: " · ";
+                color: #c3b9a6;
+            }
+
+            .person-cta{
+                text-align: center;
+                margin: 10px 40px 70px;
+                padding: 40px 30px 10px;
+                border-top: 1px solid #e4dccd;
+                max-width: 1080px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .person-cta h2{
+                font-family: "Great Vibes", cursive;
+                font-size: 2.4rem;
+                font-weight: 400;
+                margin: 0 0 10px;
+            }
+            .person-cta p{
+                font-size: 1.15rem;
+                font-weight: 200;
+                color: #555;
+                max-width: 620px;
+                margin: 0 auto 28px;
+                line-height: 1.6;
+            }
+
+            @media (max-width: 860px){
+                .story, .story:nth-child(even){ flex-direction: column; gap: 22px; }
+                .story-art{ flex-basis: auto; width: 100%; }
+                .story-list{ padding: 20px 18px 40px; gap: 64px; }
+            }
+        </style>
     </head>
     <body>
         <main>
             <div class="main-img-container">
-                <img class="main-img" src="/images/logos/logo-2-transparent.png" alt="">
+                <img class="main-img" src="/images/logos/logo-2-transparent.png" alt="SLM Custom Art">
             </div>
 
             <nav>
@@ -65,7 +185,7 @@
                             <img src="/images/personalization/person-home-1.avif" alt="Watercolor portrait of a lakeside summer cottage with hammock and whirligig">
                         </div>
                         <div class="story-panel">
-                            <!-- <span class="story-eyebrow">A Lifetime of Summers</span> -->
+                            <span class="story-eyebrow">A Lifetime of Summers</span>
                             <h2 class="story-title">The Summer Cottage</h2>
                             <p class="story-text">
                                 I painted this portrait for a man who has cherished his summers at
@@ -86,10 +206,10 @@
                     <!-- Story 2 -->
                     <article class="story">
                         <div class="story-art">
-                            <img src="/images/personalization/person-home-2.avif" alt="Portrait of a family home with American flag and flagpole">
+                            <img src="/images/homes/varney-rd.jpg" alt="Portrait of a family home with American flag and flagpole">
                         </div>
                         <div class="story-panel">
-                            <!-- <span class="story-eyebrow">Home, Already Loved</span> -->
+                            <span class="story-eyebrow">Home, Already Loved</span>
                             <h2 class="story-title">A Military Family’s Home</h2>
                             <p class="story-text">
                                 I painted this for a military family who had just purchased this lovely
@@ -110,10 +230,10 @@
                     <!-- Story 3 -->
                     <article class="story">
                         <div class="story-art">
-                            <img src="/images/personalization/person-home-3.avif" alt="Portrait of a lakeside camp with the family's boat on the water">
+                            <img src="/images/homes/chesley-dr.jpg" alt="Portrait of a lakeside camp with the family's boat on the water">
                         </div>
                         <div class="story-panel">
-                            <!-- <span class="story-eyebrow">More Than a House</span> -->
+                            <span class="story-eyebrow">More Than a House</span>
                             <h2 class="story-title">The Lake Camp</h2>
                             <p class="story-text">
                                 I painted this for very good friends who have a summer “camp” on the
@@ -133,7 +253,7 @@
 
                 </div>
 
-                <!-- <div class="person-cta">
+                <div class="person-cta">
                     <h2>Your story, painted in.</h2>
                     <p>
                         Have a detail that makes your place special? A porch swing, a garden, a
@@ -141,16 +261,14 @@
                         your portrait truly yours.
                     </p>
                     <a href="/pages/contact.html" class="order-btn">Order Your Custom Portrait</a>
-                </div> -->
+                </div>
 
             </section>
 
             <footer>
                 <p>© 2026 SLM Custom Art</p>
             </footer>
-
         </main>
-
 
         <script src="index.js"></script>
     </body>

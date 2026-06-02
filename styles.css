@@ -617,3 +617,123 @@ a.active-nav{
     line-height: 1.6;
     color: #333;
 }
+
+/* ---- Personalization story layout (alternating, no-frame) ---- */
+.person-intro{
+    max-width: 760px;
+    margin: 0 auto 10px;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 200;
+    line-height: 1.6;
+    color: #444;
+}
+.story-list{
+    display: flex;
+    flex-direction: column;
+    gap: 96px;
+    padding: 40px 40px 60px;
+    max-width: 1080px;
+    margin: 0 auto;
+}
+.story{
+    display: flex;
+    align-items: center;
+    gap: 56px;
+}
+.story:nth-child(even){
+    flex-direction: row-reverse;
+}
+.story-art{
+    flex: 0 0 48%;
+}
+.story-art img{
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 14px 30px rgba(58, 42, 31, 0.16);
+}
+.story-panel{
+    flex: 1 1 52%;
+}
+.story-eyebrow{
+    font-family: "Playfair Display", serif;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.72rem;
+    color: #6b9080;
+    margin-bottom: 4px;
+}
+.story-title{
+    font-family: "Great Vibes", cursive;
+    font-size: 2.6rem;
+    font-weight: 400;
+    margin: 0 0 14px;
+    color: #2b2b2b;
+}
+.story-text{
+    font-size: 1.14rem;
+    font-weight: 200;
+    line-height: 1.75;
+    color: #3a3a3a;
+    margin: 0 0 22px;
+}
+.story-details{
+    border-top: 1px solid #e4dccd;
+    padding-top: 16px;
+}
+.story-details-label{
+    font-family: "Playfair Display", serif;
+    font-size: 0.74rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #9a9a9a;
+    margin-bottom: 6px;
+}
+.story-details-items{
+    font-family: "Playfair Display", serif;
+    font-size: 1.02rem;
+    color: #4f6f63;
+    line-height: 1.5;
+}
+.story-details-items span:not(:last-child)::after{
+    content: " · ";
+    color: #c3b9a6;
+}
+.person-cta{
+    text-align: center;
+    margin: 10px auto 70px;
+    padding: 40px 30px 10px;
+    border-top: 1px solid #e4dccd;
+    max-width: 1080px;
+}
+.person-cta h2{
+    font-family: "Great Vibes", cursive;
+    font-size: 2.4rem;
+    font-weight: 400;
+    margin: 0 0 10px;
+}
+.person-cta p{
+    font-size: 1.15rem;
+    font-weight: 200;
+    color: #555;
+    max-width: 620px;
+    margin: 0 auto 28px;
+    line-height: 1.6;
+}
+@media (max-width: 860px){
+    .story, .story:nth-child(even){
+        flex-direction: column;
+        gap: 22px;
+    }
+    .story-art{
+        flex-basis: auto;
+        width: 100%;
+    }
+    .story-list{
+        padding: 20px 18px 40px;
+        gap: 64px;
+    }
+}
