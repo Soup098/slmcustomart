@@ -480,6 +480,11 @@ a.active-nav{
     margin-bottom: 30px;
     text-align: left;
 }
+.pricing-section p{
+    margin-top: 10px;
+    font-size: 1.2rem;
+    text-align: center;
+}
 
 .pricing-table {
     width: 100%;
@@ -735,5 +740,123 @@ a.active-nav{
     .story-list{
         padding: 20px 18px 40px;
         gap: 64px;
+    }
+}
+
+/* ****************************** */
+/* HOW TO ORDER — TIMELINE STYLES */
+/* ****************************** */
+.order-intro{
+    max-width: 600px;
+    margin: 0 auto 14px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 200;
+    line-height: 1.6;
+    color: #444;
+}
+.order-timeline{
+    position: relative;
+    max-width: 760px;
+    margin: 40px auto 0;
+    padding-left: 78px;
+}
+/* the vertical spine */
+.order-timeline::before{
+    content: "";
+    position: absolute;
+    left: 27px;
+    top: 6px;
+    bottom: 6px;
+    width: 3px;
+    background: linear-gradient(#6b9080, #d8c9ad);
+    border-radius: 3px;
+}
+.order-step{
+    position: relative;
+    padding: 0 0 48px 0;
+}
+.order-step:last-child{
+    padding-bottom: 0;
+}
+.order-dot{
+    position: absolute;
+    left: -78px;
+    top: -4px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #e8836b;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border: 5px solid #fcf5eb;
+    box-shadow: 0 0 0 2px #e8836b;
+}
+.order-panel{
+    background: #fff;
+    border: 1px solid #ece2d0;
+    border-radius: 12px;
+    padding: 24px 28px;
+    box-shadow: 0 12px 26px -18px rgba(75, 55, 30, 0.4);
+}
+.order-panel h2{
+    font-family: "Great Vibes", cursive;
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: #4f6f63;
+    margin: 0 0 8px;
+}
+.order-panel p{
+    font-size: 1.12rem;
+    font-weight: 200;
+    line-height: 1.7;
+    color: #3a3a3a;
+    margin: 0;
+}
+.order-panel p a{
+    color: #d76a51;
+    font-weight: 400;
+    text-decoration: none;
+}
+.order-panel p a:hover{
+    text-decoration: underline;
+}
+.order-btn-step{
+    display: inline-block;
+    margin-top: 16px;
+    background: #6b9080;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    letter-spacing: 0.4px;
+    transition: background 0.2s ease;
+}
+.order-btn-step:hover{
+    background: #4f6f63;
+}
+.order-fine{
+    margin-top: 12px;
+    font-size: 0.98rem;
+    color: #7a756a;
+    font-style: italic;
+}
+@media (max-width: 560px){
+    .order-timeline{
+        padding-left: 60px;
+    }
+    .order-timeline::before{
+        left: 20px;
+    }
+    .order-dot{
+        left: -60px;
+        width: 44px;
+        height: 44px;
+        font-size: 1.2rem;
     }
 }
