@@ -46,10 +46,11 @@ Talk with mom:
 TODO
 process page for both Pet and Homes
 housed water color, pets are not.
-change main hero *DONE*
-swap splash page cards on bottom so pet comes first. *DONE*
 start slideshow with pet. and separate them so they are not blurry
 mom is going to get more concrete prices
-* at bottom of price table. "custom sizes available apon request"*DONE*
-flip pet and home portraits in gallery drop down.
+
+at bottom of price table. "custom sizes available apon request"*DONE*
+flip pet and home portraits in gallery drop down. *DONE*
+swap splash page cards on bottom so pet comes first. *DONE*
+change main hero *DONE*
 
