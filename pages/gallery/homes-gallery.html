@@ -58,6 +58,14 @@
                     const db = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
                     const CATEGORY = "home"
 
+                    function escapeHtml(str){
+                        return String(str ?? "")
+                            .replace(/&/g, "&amp;")
+                            .replace(/</g, "&lt;")
+                            .replace(/>/g, "&gt;")
+                            .replace(/"/g, "&quot;")
+                    }
+
                     async function loadGallery(){
                         const grid = document.getElementById("gallery")
                         const { data, error } = await db
@@ -73,8 +81,8 @@
 
                         grid.innerHTML = data.map(piece => `
                             <figure class="card">
-                                <img src="${piece.image_url}" alt="portrait: ${piece.title}" loading="lazy">
-                                <figcaption class="card-title">${piece.title}</figcaption>
+                                <img src="${escapeHtml(piece.image_url)}" alt="portrait: ${escapeHtml(piece.title)}" loading="lazy">
+                                <figcaption class="card-title">${escapeHtml(piece.title)}</figcaption>
                             </figure>
                         `).join("")
                     }

@@ -25,8 +25,80 @@
             <h1>Gallery Manager</h1>
             <button id="logout-btn" class="ghost">Log out</button>
         </header>
-        <!-- upload form goes here (Section 4) -->
-        <!-- thumbnail grids go here (Section 5) -->
+
+        <div class="dashboard-layout">
+            <!-- LEFT: upload panel -->
+            <form id="upload-form" class="panel">
+                <h2>Add a portrait</h2>
+
+                <label class="field">
+                    <span class="field-label">Title</span>
+                    <input id="title" type="text" placeholder="e.g. Bella the Labrador" required>
+                </label>
+
+                <label class="field">
+                    <span class="field-label">Short description</span>
+                    <textarea id="description" placeholder="A sentence about this piece"></textarea>
+                </label>
+
+                <div class="field">
+                    <span class="field-label">Gallery</span>
+                    <div class="segmented">
+                        <label class="seg">
+                            <input type="radio" name="category" value="pet" checked>
+                            <span>Pet</span>
+                        </label>
+                        <label class="seg">
+                            <input type="radio" name="category" value="home">
+                            <span>Home</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <span class="field-label">Photo</span>
+                    <!-- drag-and-drop target (also clickable to browse) -->
+                    <div id="dropzone" class="dropzone">
+                        <svg class="dropzone-icon" viewBox="0 0 24 24" width="34" height="34"
+                             fill="none" stroke="currentColor" stroke-width="1.6"
+                             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        <span class="dropzone-text">
+                            <strong>Drag a photo here</strong>
+                            or click to browse
+                        </span>
+                    </div>
+                    <input id="file-input" type="file" accept="image/*" hidden>
+
+                    <!-- preview shown after a file is chosen -->
+                    <figure id="preview-wrap" class="preview-wrap" hidden>
+                        <img id="preview" class="preview" alt="">
+                        <button type="button" id="preview-remove" class="preview-remove"
+                                aria-label="Remove photo">&times;</button>
+                        <figcaption id="preview-name" class="preview-name"></figcaption>
+                    </figure>
+                </div>
+
+                <button type="submit">Upload to gallery</button>
+                <p id="upload-msg" class="msg"></p>
+            </form>
+
+            <!-- RIGHT: stacked gallery grids -->
+            <div class="gallery-column">
+                <section class="panel">
+                    <h2>Pet portraits</h2>
+                    <div id="pet-grid" class="grid"></div>
+                </section>
+                <section class="panel">
+                    <h2>Home portraits</h2>
+                    <div id="home-grid" class="grid"></div>
+                </section>
+            </div>
+        </div>
+
     </section>
     <script src="/admin/admin.js"></script>
 </body>
