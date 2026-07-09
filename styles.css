@@ -255,7 +255,6 @@ a.active-nav{
     font-weight: 600;
     transition: all 0.2s ease;
     text-overflow: 0;
-    
 }
 
 /* Primary Button (Order Portrait) */
@@ -267,9 +266,9 @@ a.active-nav{
 
 /* Secondary Button (View Gallery) */
 .btn-secondary {
-    border: 1px solid whitesmoke;
+    /* border: 1px solid whitesmoke; */
     color: whitesmoke;
-    
+    background-color: #6b9080;
 }
 
 /* Hover Effects */
