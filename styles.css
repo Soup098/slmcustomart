@@ -280,10 +280,12 @@ a.active-nav{
 }
 
 .btn-secondary:hover {
-    background-color: #6b9080;
-    border: 1px solid #6b9080;
+    /* background-color: #6b9080;
     color: whitesmoke;
+    transform: translateY(-1px); */
+    background-color: #4f6f63;
     transform: translateY(-1px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.6);
 }
 
 /* ******************* */
