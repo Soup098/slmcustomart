@@ -1,10 +1,9 @@
 
 -----TODO-----
-form functionality *MVP*
-fix top of page logo *MVP*
+
+
 Photo tips page *MVP*
 Add edit functionality to images in admin page
-change image container in admin page so it increases in size when more images are added
 Look into Venmo integration. cleaner payment method instructions
 process page for both Pet and Homes
 housed water color, pets are not.
@@ -12,12 +11,15 @@ start slideshow with pet. and separate them so they are not blurry
 make adjustments to slideshow for bluryness and sizing
 get more concrete prices from client
 
+fix top of page logo *DONE*
+form functionality *DONE*
 admin page for adding images to gallery *DONE*
 database connection *DONE*
 at bottom of price table. "custom sizes available apon request"*DONE*
 flip pet and home portraits in gallery drop down. *DONE*
 swap splash page cards on bottom so pet comes first. *DONE*
 change main hero *DONE*
+change image container in admin page so it increases in size when more images are added *DONE*
 
 
 

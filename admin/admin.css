@@ -51,7 +51,7 @@ body {
 .dashboard-view {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;   /* grow with content instead of trapping everything in one screen */
 }
 .bar {
     display: flex;
@@ -64,7 +64,7 @@ body {
 /* two-column layout: upload on the left, stacked grids on the right */
 .dashboard-layout {
     flex: 1;
-    min-height: 0;            /* lets children scroll instead of growing the page */
+    min-height: 0;
     display: grid;
     grid-template-columns: minmax(320px, 400px) 1fr;
     gap: 24px;
@@ -73,9 +73,8 @@ body {
 }
 .gallery-column {
     display: grid;
-    grid-template-rows: 1fr 1fr;   /* two equal stacked grids */
+    grid-template-rows: auto auto;   /* each panel takes only the height its own content needs */
     gap: 24px;
-    min-height: 0;
 }
 .bar h1 { 
     font-size: 20px; 
@@ -262,10 +261,9 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
     gap: 14px;
-    flex: 1;                 /* fill the panel */
-    min-height: 0;
-    overflow-y: auto;        /* scroll thumbnails here, not the page */
     align-content: start;    /* keep rows packed at the top */
+    max-height: 70vh;        /* safety net for very long lists — scrolls beyond this instead of growing forever */
+    overflow-y: auto;
 }
 .card { 
     position: relative; 
@@ -308,16 +306,11 @@ body {
 
 /* On narrow screens, stack everything in one column and allow page scroll */
 @media (max-width: 800px) {
-    .dashboard-view {
-        height: auto;
-    }
     .dashboard-layout {
         grid-template-columns: 1fr;
     }
-    .gallery-column {
-        grid-template-rows: none;
-    }
     .grid {
+        max-height: none;
         overflow-y: visible;
     }
 }
