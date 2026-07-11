@@ -1,8 +1,9 @@
 
 -----TODO-----
-
-
 Photo tips page *MVP*
+Footer *MVP*
+Mobile friendly interface *MVP*
+
 Add edit functionality to images in admin page
 Look into Venmo integration. cleaner payment method instructions
 process page for both Pet and Homes
