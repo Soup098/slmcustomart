@@ -1,0 +1,1057 @@
+/* ============================================================
+   SLM Custom Art — site styles (refactored)
+   ------------------------------------------------------------
+   Structure:
+     1.  Design tokens (:root)
+     2.  Base / layout
+     3.  Navigation (+ mobile hamburger)
+     4.  Page title
+     5.  Home hero
+     6.  Featured section
+     7.  Buttons
+     8.  Gallery
+     9.  Meet the artist
+     10. Pricing
+     11. Contact form
+     12. Personalization / story layout
+     13. Photo tips
+     14. How to order (timeline)
+     15. Responsive — tablet (<=900px) & phone (<=600px)
+     16. Archive (unused rules, kept for reference)
+   Breakpoints: --bp-tablet 900px, --bp-phone 600px
+   (CSS vars can't be used inside @media, so the numbers are
+    written literally but kept consistent throughout.)
+   ============================================================ */
+
+/* 1. DESIGN TOKENS ------------------------------------------ */
+:root{
+    /* brand palette */
+    --cream:      #fcf5eb;   /* page background */
+    --cream-deep: #f3ead9;   /* frame / warm panel */
+    --teal:       #6b9080;   /* primary accent */
+    --teal-dark:  #4f6f63;   /* accent hover / active */
+    --coral:      #d76a51;   /* secondary accent (links) */
+
+    /* ink & text */
+    --ink:        #2b2b2b;   /* darkest headings */
+    --text:       #333;      /* body copy */
+    --text-soft:  #3a3a3a;   /* softer body copy */
+    --muted:      #9a9a9a;   /* labels / captions */
+
+    /* surfaces & lines */
+    --panel:      #fff;
+    --line:       #e4dccd;   /* hairline dividers */
+    --line-soft:  #ece2d0;   /* panel borders */
+
+    /* type */
+    --font-script: "Great Vibes", cursive;
+    --font-body:   "Playfair Display", serif;
+    --font-hero:   "Fraunces", serif;
+
+    /* effects */
+    --shadow-img:  0 6px 18px rgba(104, 98, 98, 0.6);
+    --shadow-soft: 0 4px 14px rgba(58, 42, 31, 0.10);
+    --radius:      12px;
+}
+
+/* 2. BASE / LAYOUT ------------------------------------------ */
+html{
+    margin: 0;
+}
+body{
+    margin: 0;
+    background-color: var(--cream);
+    font-family: var(--font-body);
+}
+main{
+    margin: auto;
+    max-width: 1260px;
+    background-color: var(--cream);
+    font-family: var(--font-body);
+}
+.main-img-container{
+    display: flex;
+    justify-content: center;
+}
+.main-img{
+    width: 30%;
+    margin-bottom: 10px;
+}
+
+/* 3. NAVIGATION --------------------------------------------- */
+nav{
+    padding: .4rem;
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+    justify-content: space-between;
+    background: var(--cream);
+
+    background-image:
+        linear-gradient(to right,
+            transparent, rgba(0,0,0,0.4) 20%, rgba(0,0,0,0.4) 80%, transparent),
+        linear-gradient(to right,
+            transparent, rgba(0,0,0,0.4) 20%, rgba(0,0,0,0.4) 80%, transparent);
+    background-size: 100% 1px, 100% 1px;
+    background-position: top, bottom;
+    background-repeat: no-repeat;
+}
+.nav-items{
+    margin: auto;
+    font-size: 1.2rem;
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+}
+.nav-items > a,
+.nav-dropdown a{
+    position: relative;
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 1.1rem;
+    color: black;
+    padding: 8px 10px;
+}
+.nav-items a::after{
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--teal);
+    transition: .2s;
+}
+.nav-items a:hover::after{
+    width: 100%;
+}
+a.active-nav{
+    color: var(--teal);
+}
+
+/* nav dropdown */
+.nav-dropdown{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.dropdown-menu{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--cream);
+    min-width: 160px;
+    box-shadow: var(--shadow-soft);
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    z-index: 3;
+}
+.dropdown-menu > a{
+    position: relative;
+    padding: 10px 16px;
+    text-decoration: none;
+    color: black;
+    font-family: var(--font-body);
+    font-weight: 500;
+}
+.dropdown-menu a:hover{
+    background: #f0e2ce;
+}
+.nav-dropdown:hover .dropdown-menu{
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* mobile hamburger hooks — hidden on desktop, shown <=900px */
+.nav-toggle{ display: none; }
+.nav-burger{ display: none; }
+
+/* 4. PAGE TITLE --------------------------------------------- */
+.page-title{
+    text-align: center;
+    font-family: var(--font-script);
+    padding: 10px;
+    font-size: 2.2rem;
+    font-weight: 500;
+}
+
+/* 5. HOME HERO ---------------------------------------------- */
+.frame{
+    margin: 30px 20px;
+    padding: 22px;
+    background: var(--cream-deep);
+    border: 20px solid;
+    border-image: linear-gradient(135deg,
+        #6b4a2b, /* shadowed walnut */
+        #8a5e35,
+        #a9733f, /* lit edge */
+        #5c3d22) 1;
+
+    box-shadow:
+        0 18px 40px rgba(0,0,0,0.45),      /* hangs on the wall */
+        inset 0 0 0 2px rgba(0,0,0,0.25);  /* lip where wood meets mat */
+}
+.slideshow{
+    height: 600px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.frame .slideshow{
+    box-shadow:
+        0 0 0 1px rgba(0,0,0,0.15),
+        inset 0 0 10px rgba(0,0,0,0.25);
+}
+.slide{
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4));
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 3s ease-in-out;
+}
+.slide.active{
+    opacity: 1;
+}
+.slideshow::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.35));
+    z-index: 1;
+    backdrop-filter: blur(1px);
+}
+.hero-container{
+    padding: 0 20px;
+    z-index: 2;
+}
+.hero-content{
+    font-family: var(--font-hero);
+    line-height: 1.3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    color: whitesmoke;
+    text-shadow: 0 3px 12px rgba(0,0,0,0.6);
+}
+.hero-content > h1{
+    font-size: 3.5rem;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    font-weight: 600;
+}
+.hero-content > p{
+    font-size: 1.4rem;
+    font-weight: 300;
+}
+.hero-buttons-container{
+    margin-top: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 32px;
+}
+
+/* 6. BUTTONS ------------------------------------------------ */
+.btn{
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 100px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+.btn-primary,
+.btn-secondary{
+    background-color: var(--teal);
+    color: whitesmoke;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+.btn-primary{ color: white; }
+.btn-primary:hover,
+.btn-secondary:hover{
+    background-color: var(--teal-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.6);
+}
+
+/* order button (pill) — used across ordering/tips pages */
+.order-btn{
+    text-decoration: none;
+    color: white;
+    background-color: var(--teal);
+    padding: 12px 20px;
+    border-radius: 100px;
+    box-shadow: var(--shadow-soft);
+}
+.order-btn:hover{
+    background-color: var(--teal-dark);
+    transform: translateY(-1px);
+}
+
+/* 7. FEATURED SECTION (home) -------------------------------- */
+.home-portrait-featured, .pet-portrait-featured{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 100px 60px;
+}
+.home-image-container, .pet-image-container{
+    width: 50%;
+}
+.home-featured-img, .pet-featured-img{
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: var(--shadow-img);
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
+}
+.home-text-container, .pet-text-container{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    text-align: start;
+    padding: 0 16px 16px 16px;
+    max-width: 500px;
+}
+.home-image-text, .pet-image-text{
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: var(--text);
+    max-width: 500px;
+}
+
+/* 8. GALLERY ------------------------------------------------ */
+.gallery{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+    padding: 1.5rem;
+}
+.card{
+    margin: 0;
+    background: var(--panel);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow-img);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+.card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(104, 98, 98, 0.6);
+}
+.card img{
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+}
+.card-title{
+    padding: 14px 16px;
+    font-family: var(--font-body);
+    font-size: 1.15rem;
+    color: var(--ink);
+    text-align: center;
+}
+
+/* 9. MEET THE ARTIST ---------------------------------------- */
+.about-artist{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+.artist-bio-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.artist-image-container > img{
+    box-shadow: var(--shadow-img);
+    border-radius: 2px;
+    margin-right: 10px;
+}
+.artist-text-container{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.artist-text-container > p{
+    font-size: 1.3rem;
+    font-weight: 200;
+    line-height: 1.6;
+    color: var(--text);
+    max-width: 1080px;
+}
+
+/* 10. PRICING ----------------------------------------------- */
+.pricing-section{
+    padding: 80px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: whitesmoke;
+    box-shadow: 1px 1px 5px gray;
+    border-radius: 42px;
+}
+.pricing-section h2{
+    font-family: var(--font-body);
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    text-align: left;
+}
+.pricing-section p{
+    margin-top: 10px;
+    font-size: 1.2rem;
+    text-align: center;
+}
+.pricing-table{
+    width: 100%;
+    border-collapse: collapse;
+    font-family: sans-serif;
+}
+.pricing-table th,
+.pricing-table td{
+    padding: 16px 12px;
+    text-align: left;
+}
+.pricing-table thead{
+    border-bottom: 2px solid var(--teal);
+}
+.pricing-table tbody tr{
+    border-bottom: 1px solid #eee;
+}
+.pricing-table th{
+    font-weight: 600;
+}
+.pricing-table td:first-child{
+    font-weight: 500;
+}
+
+/* 11. CONTACT FORM ------------------------------------------ */
+.order-container{
+    max-width: 700px;
+    margin: auto;
+}
+.order-title{
+    font-family: var(--font-script);
+    font-size: 2.5rem;
+    font-weight: 200;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.order-subtitle{
+    text-align: center;
+    margin-bottom: 40px;
+    color: #575757;
+    font-size: 1.2rem;
+}
+.order-form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.form-row{
+    display: flex;
+    gap: 20px;
+}
+.form-row .form-group{
+    flex: 1;
+}
+.form-group{
+    display: flex;
+    flex-direction: column;
+}
+.form-group label{
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+    color: #444;
+}
+.form-group input,
+.form-group select,
+.form-group textarea{
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f7;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+    outline: none;
+    border-color: var(--teal);
+    background-color: var(--panel);
+    box-shadow: 0 0 0 2px rgba(107, 144, 128, 0.2);
+}
+.order-submit{
+    margin-top: 20px;
+    padding: 16px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--teal);
+    color: white;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+.order-submit:hover{
+    background-color: var(--teal-dark);
+}
+
+/* 12. PERSONALIZATION / STORY LAYOUT ------------------------ */
+.person-title{
+    font-family: var(--font-script);
+    font-size: 2.25rem;
+    font-weight: 200;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.person-intro{
+    max-width: 760px;
+    margin: 0 auto 10px;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 200;
+    line-height: 1.6;
+    color: #444;
+}
+.story-list{
+    display: flex;
+    flex-direction: column;
+    gap: 96px;
+    padding: 40px 40px 60px;
+    max-width: 1080px;
+    margin: 0 auto;
+}
+.story{
+    display: flex;
+    align-items: center;
+    gap: 56px;
+}
+.story-art{
+    flex: 0 0 48%;
+}
+.story-art img{
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: var(--shadow-img);
+}
+.story-panel{
+    flex: 1 1 52%;
+}
+.story-eyebrow{
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.72rem;
+    color: var(--teal);
+    margin-bottom: 4px;
+}
+.story-title{
+    font-family: var(--font-script);
+    font-size: 2.6rem;
+    font-weight: 400;
+    margin: 0 0 14px;
+    color: var(--ink);
+}
+.story-text{
+    font-size: 1.14rem;
+    font-weight: 200;
+    line-height: 1.75;
+    color: var(--text-soft);
+    margin: 0 0 22px;
+}
+.story-details{
+    border-top: 1px solid var(--line);
+    padding-top: 16px;
+}
+.story-details-label{
+    font-family: var(--font-body);
+    font-size: 0.74rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+}
+.story-details-items{
+    font-family: var(--font-body);
+    font-size: 1.02rem;
+    color: var(--teal-dark);
+    line-height: 1.5;
+}
+.story-details-items span:not(:last-child)::after{
+    content: " · ";
+    color: #c3b9a6;
+}
+.person-cta{
+    text-align: center;
+    margin: 10px auto 70px;
+    padding: 40px 30px 10px;
+    border-top: 1px solid var(--line);
+    max-width: 1080px;
+}
+.person-cta h2{
+    font-family: var(--font-script);
+    font-size: 2.4rem;
+    font-weight: 400;
+    margin: 0 0 10px;
+}
+.person-cta p{
+    font-size: 1.15rem;
+    font-weight: 200;
+    color: #555;
+    max-width: 620px;
+    margin: 0 auto 28px;
+    line-height: 1.6;
+}
+
+/* 13. PHOTO TIPS -------------------------------------------- */
+.tips-intro{
+    max-width: 720px;
+    margin: 0 auto 24px;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 200;
+    line-height: 1.6;
+    color: #444;
+}
+.tips-layout{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 20px 40px 20px;
+}
+.tips-cards{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+.tip-label{
+    display: block;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.4px;
+    color: var(--teal-dark);
+    margin-bottom: 6px;
+}
+.tips-gallery{
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    position: sticky;
+    top: 20px;
+}
+.tips-gallery figure{
+    margin: 0;
+}
+.tips-gallery img{
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 8px 22px rgba(104, 98, 98, 0.55);
+}
+.tips-cta{
+    text-align: center;
+    margin: 20px auto 70px;
+    padding: 34px 30px 10px;
+    border-top: 1px solid var(--line);
+    max-width: 1080px;
+}
+.tips-cta h2{
+    font-family: var(--font-script);
+    font-size: 2.2rem;
+    font-weight: 400;
+    margin: 0 0 16px;
+}
+
+/* 14. HOW TO ORDER (timeline) ------------------------------- */
+.order-intro{
+    max-width: 600px;
+    margin: 0 auto 14px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 200;
+    line-height: 1.6;
+    color: #444;
+}
+.order-timeline{
+    position: relative;
+    max-width: 760px;
+    margin: 40px auto 0;
+    padding-left: 78px;
+}
+.order-timeline::before{
+    content: "";
+    position: absolute;
+    left: 27px;
+    top: 6px;
+    bottom: 6px;
+    width: 3px;
+    background: linear-gradient(var(--teal), #d8c9ad);
+    border-radius: 3px;
+}
+.order-step{
+    position: relative;
+    padding: 0 0 48px 0;
+}
+.order-step:last-child{
+    padding-bottom: 0;
+}
+.order-dot{
+    position: absolute;
+    left: -78px;
+    top: -4px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--teal-dark);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border: 5px solid var(--cream);
+    box-shadow: 0 0 0 2px var(--teal-dark);
+}
+.order-panel{
+    background: var(--panel);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    box-shadow: 0 12px 26px -18px rgba(75, 55, 30, 0.4);
+}
+.order-panel h2{
+    font-family: var(--font-script);
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: var(--text-soft);
+    margin: 0 0 8px;
+}
+.order-panel p{
+    font-size: 1.12rem;
+    font-weight: 200;
+    line-height: 1.7;
+    color: var(--text-soft);
+    margin: 0;
+}
+.order-panel p a{
+    color: var(--coral);
+    font-weight: 400;
+    text-decoration: none;
+}
+.order-panel p a:hover{
+    text-decoration: underline;
+}
+.order-btn-step{
+    display: inline-block;
+    margin-top: 16px;
+    background: var(--teal);
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    letter-spacing: 0.4px;
+    transition: background 0.2s ease;
+}
+.order-btn-step:hover{
+    background: var(--teal-dark);
+}
+.order-fine{
+    margin-top: 12px;
+    font-size: 0.98rem;
+    color: #7a756a;
+    font-style: italic;
+}
+
+/* ============================================================
+   15. RESPONSIVE
+   ============================================================ */
+
+/* ---- TABLET & below (<=900px) ---------------------------- */
+@media (max-width: 900px){
+
+    /* --- nav becomes a hamburger menu --- */
+    nav{
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 0 16px;
+        position: relative;
+    }
+    .nav-burger{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 44px;
+        height: 40px;
+        padding: 8px;
+        margin-left: auto;
+        cursor: pointer;
+    }
+    .nav-burger span{
+        display: block;
+        width: 100%;
+        height: 3px;
+        border-radius: 2px;
+        background: var(--text-soft);
+        transition: transform .25s ease, opacity .25s ease;
+    }
+    /* menu hidden until the toggle is checked */
+    .nav-items{
+        flex-basis: 100%;
+        width: 100%;
+        margin: 6px 0 4px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .nav-toggle:checked ~ .nav-items{
+        display: flex;
+    }
+    .nav-items > a,
+    .nav-dropdown{
+        width: 100%;
+    }
+    .nav-items > a,
+    .nav-dropdown > a{
+        display: block;
+        padding: 12px 6px;
+        border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .nav-items a::after{ display: none; }   /* drop the underline slide on mobile */
+    .nav-dropdown{
+        flex-direction: column;
+        align-items: stretch;
+    }
+    /* submenus expand inline when the menu is open (no hover needed) */
+    .dropdown-menu{
+        position: static;
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+        box-shadow: none;
+        background: transparent;
+        min-width: 0;
+        padding-left: 16px;
+    }
+    .dropdown-menu > a{ padding: 9px 10px; }
+    /* burger -> X when open */
+    .nav-toggle:checked ~ .nav-burger span:nth-child(1){ transform: translateY(8px) rotate(45deg); }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(2){ opacity: 0; }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(3){ transform: translateY(-8px) rotate(-45deg); }
+
+    /* --- logo a touch larger so it reads on smaller screens --- */
+    .main-img{ width: 46%; }
+
+    /* --- home hero scales down --- */
+    .slideshow{ height: 460px; }
+    .hero-content > h1{ font-size: 2.6rem; }
+    .hero-content > p{ font-size: 1.2rem; }
+    .hero-buttons-container{ margin-top: 40px; gap: 20px; }
+
+    /* --- featured blocks stack --- */
+    .home-portrait-featured, .pet-portrait-featured{
+        flex-direction: column;
+        gap: 28px;
+        margin: 56px 24px;
+    }
+    .home-image-container, .pet-image-container,
+    .home-text-container, .pet-text-container{
+        width: 100%;
+        max-width: 620px;
+    }
+    .home-text-container, .pet-text-container{
+        align-items: center;
+        text-align: center;
+    }
+
+    /* --- gallery: 3 -> 2 columns --- */
+    .gallery{ grid-template-columns: repeat(2, 1fr); }
+
+    /* --- story layout stacks --- */
+    .story{
+        flex-direction: column;
+        gap: 22px;
+    }
+    .story-art{
+        flex-basis: auto;
+        width: 100%;
+    }
+    .story-list{
+        padding: 20px 18px 40px;
+        gap: 64px;
+    }
+
+    /* --- photo tips: two columns -> one --- */
+    .tips-layout{
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 16px 18px;
+    }
+    .tips-gallery{ position: static; }
+
+    /* --- pricing padding trims --- */
+    .pricing-section{ padding: 48px 20px; border-radius: 28px; }
+
+    /* --- contact: name/email row stacks --- */
+    .form-row{ flex-direction: column; gap: 20px; }
+}
+
+/* ---- PHONE & below (<=600px) ----------------------------- */
+@media (max-width: 600px){
+
+    .main-img{ width: 56%; }
+
+    /* gallery: single column */
+    .gallery{
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        padding: 1rem;
+    }
+
+    /* hero shrinks further */
+    .frame{ margin: 18px 10px; padding: 12px; border-width: 12px; }
+    .slideshow{ height: 380px; }
+    .hero-content > h1{ font-size: 2rem; }
+    .hero-content > p{ font-size: 1.05rem; }
+    .hero-buttons-container{ flex-direction: column; align-items: center; gap: 14px; }
+
+    /* heading scale-down */
+    .page-title{ font-size: 1.9rem; }
+    .story-title{ font-size: 2.1rem; }
+    .person-cta h2, .person-title{ font-size: 2rem; }
+    .order-panel h2{ font-size: 1.9rem; }
+
+    /* body copy eases down a touch */
+    .home-image-text, .pet-image-text,
+    .artist-text-container > p,
+    .person-intro, .tips-intro, .order-intro{
+        font-size: 1.12rem;
+    }
+
+    /* pricing table breathes less */
+    .pricing-section{ padding: 36px 14px; }
+    .pricing-section h2{ font-size: 1.8rem; }
+    .pricing-table th,
+    .pricing-table td{ padding: 12px 8px; font-size: 0.95rem; }
+
+    /* timeline compacts */
+    .order-timeline{ padding-left: 58px; }
+    .order-timeline::before{ left: 20px; }
+    .order-dot{
+        left: -58px;
+        width: 44px;
+        height: 44px;
+        font-size: 1.2rem;
+    }
+    .order-panel{ padding: 20px 18px; }
+}
+
+/* ============================================================
+   16. ARCHIVE — rules with no current markup on the site.
+   Kept (commented) in case the related pages/sections return.
+   Remove freely once you're sure they're not needed.
+   ============================================================ */
+/*
+.logo{
+    border-right: 1px solid black;
+    width: 15%;
+    display: flex;
+    align-items: center;
+    letter-spacing: normal;
+    padding-right: 10px;
+}
+.logo > img{
+    width: 100%;
+}
+.initials{
+    margin-right: 12px;
+    font-family: var(--font-script);
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+.logo-brand{
+    font-family: var(--font-body);
+    font-size: 1.3rem;
+    font-weight: 300;
+}
+.person-card{
+    display: flex;
+    max-width: 1080px;
+    margin: auto;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+}
+.person-card > img{
+    max-width: 520px;
+}
+.person-text-container{
+    margin: 5px 5px 5px 0;
+    padding: 5px 5px 5px 10px;
+}
+.person-text-container > h2{
+    text-align: center;
+}
+.person-text-container > p{
+    font-size: 1.3rem;
+    font-weight: 200;
+    line-height: 1.6;
+    color: var(--text);
+}
+.process-intro{
+    font-size: 1.3rem;
+    line-height: 1.6;
+    width: 80%;
+    text-align: center;
+    margin: auto;
+    color: var(--text);
+}
+.step-card{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1rem;
+}
+.step-image{
+    width: 40%;
+    height: auto;
+}
+.step-image > img{
+    width: 100%;
+    box-shadow: var(--shadow-img);
+}
+.step-text{
+    width: 60%;
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: var(--text);
+    max-width: 500px;
+}
+*/
