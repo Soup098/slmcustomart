@@ -1,8 +1,7 @@
 
 -----TODO-----
-Photo tips page *MVP*
 Footer *MVP*
-Mobile friendly interface *MVP*
+Optimise for mobile *MVP*
 
 Add edit functionality to images in admin page
 Look into Venmo integration. cleaner payment method instructions
@@ -12,6 +11,7 @@ start slideshow with pet. and separate them so they are not blurry
 make adjustments to slideshow for bluryness and sizing
 get more concrete prices from client
 
+Photo tips page *DONE*
 fix top of page logo *DONE*
 form functionality *DONE*
 admin page for adding images to gallery *DONE*
