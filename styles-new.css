@@ -16,8 +16,9 @@
      12. Personalization / story layout
      13. Photo tips
      14. How to order (timeline)
-     15. Responsive — tablet (<=900px) & phone (<=600px)
-     16. Archive (unused rules, kept for reference)
+     15. Site footer
+     16. Responsive — tablet (<=900px) & phone (<=600px)
+     17. Archive (unused rules, kept for reference)
    Breakpoints: --bp-tablet 900px, --bp-phone 600px
    (CSS vars can't be used inside @media, so the numbers are
     written literally but kept consistent throughout.)
@@ -790,8 +791,74 @@ a.active-nav{
     font-style: italic;
 }
 
+/* 15. SITE FOOTER ------------------------------------------- */
+.site-footer{
+    margin-top: 60px;
+    border-top: 1px solid var(--line);
+    background: var(--cream);
+    font-family: var(--font-body);
+}
+.footer-inner{
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 40px 24px 24px;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 40px;
+}
+.footer-brand{
+    font-family: var(--font-script);
+    font-size: 1.9rem;
+    font-weight: 400;
+    margin: 0 0 8px;
+    color: var(--ink);
+}
+.footer-tagline{
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 200;
+    line-height: 1.6;
+    color: var(--text);
+    max-width: 320px;
+}
+.footer-heading{
+    margin: 0 0 12px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+.footer-links{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.footer-links a{
+    text-decoration: none;
+    font-size: 1rem;
+    color: var(--text-soft);
+    transition: color .2s ease;
+}
+.footer-links a:hover{
+    color: var(--teal);
+}
+.footer-bottom{
+    border-top: 1px solid var(--line);
+    text-align: center;
+    padding: 16px 20px;
+}
+.footer-bottom p{
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
 /* ============================================================
-   15. RESPONSIVE
+   16. RESPONSIVE
    ============================================================ */
 
 /* ---- TABLET & below (<=900px) ---------------------------- */
@@ -922,6 +989,13 @@ a.active-nav{
 
     /* --- contact: name/email row stacks --- */
     .form-row{ flex-direction: column; gap: 20px; }
+
+    /* --- footer: 3 columns -> 2 --- */
+    .footer-inner{
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+        padding: 32px 20px 20px;
+    }
 }
 
 /* ---- PHONE & below (<=600px) ----------------------------- */
@@ -972,10 +1046,19 @@ a.active-nav{
         font-size: 1.2rem;
     }
     .order-panel{ padding: 20px 18px; }
+
+    /* footer: single centered column */
+    .footer-inner{
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 24px;
+    }
+    .footer-tagline{ margin: 0 auto; }
+    .footer-links{ align-items: center; }
 }
 
 /* ============================================================
-   16. ARCHIVE — rules with no current markup on the site.
+   17. ARCHIVE — rules with no current markup on the site.
    Kept (commented) in case the related pages/sections return.
    Remove freely once you're sure they're not needed.
    ============================================================ */
