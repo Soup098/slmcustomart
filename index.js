@@ -37,5 +37,5 @@ function changeSlide(){
 setInterval(changeSlide, 5500)
 
 const footerBottom = document.getElementById("footer-bottom")
-
-footerBottom.textContent = `&copy;2026 SLM Custom Art. All rights reserved`
+const currentYear = new Date().getFullYear()
+footerBottom.textContent = `©${currentYear} SLM Custom Art. All rights reserved`
