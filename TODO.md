@@ -1,11 +1,17 @@
 
 -----TODO-----
+add links to facebook and instagram
+fix home images compressing in admin page
+edit buttons on main hero to have pets and home gallery, and the order portrait
+Add model pop ups with discription to image gallerys
 Add edit functionality to images in admin page
+Make it so that the images can be re-ordered on the gallery
 Look into Venmo integration. cleaner payment method instructions
 process page for both Pet and Homes
 start slideshow with pet. and separate them so they are not blurry
 make adjustments to slideshow for bluryness and sizing
 get more concrete prices from client
+
 
 Optimise for mobile *DONE*
 Footer *DONE*
