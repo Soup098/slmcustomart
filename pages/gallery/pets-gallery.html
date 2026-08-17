@@ -83,7 +83,10 @@
                         }
 
                         grid.innerHTML = data.map(piece => `
-                            <figure class="card">
+                            <figure class="card"
+                                data-full="${escapeHtml(piece.image_url)}"
+                                data-title="${escapeHtml(piece.title || "")}"
+                                data-desc="${escapeHtml(piece.description || "")}">
                                 <img src="${escapeHtml(piece.image_url)}" alt="portrait: ${escapeHtml(piece.title)}" loading="lazy">
                                 <figcaption class="card-title">${escapeHtml(piece.title)}</figcaption>
                             </figure>
@@ -132,6 +135,18 @@
                 <!-- copyright bar -->
                 <div class="footer-bottom" id="footer-bottom"></div>
             </footer>
+
+            <!-- LIGHTBOX (click a portrait to view the full image + details) -->
+            <div id="lightbox" class="lightbox" hidden>
+                <div class="lightbox-inner">
+                    <button class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+                    <img class="lightbox-img" id="lightbox-img" src="" alt="">
+                    <div class="lightbox-caption">
+                        <h2 class="lightbox-title" id="lightbox-title"></h2>
+                        <p class="lightbox-desc" id="lightbox-desc"></p>
+                    </div>
+                </div>
+            </div>
 
         </main>
         <script src="gallery.js"></script>

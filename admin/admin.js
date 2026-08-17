@@ -201,10 +201,13 @@ async function renderGrid(category, grid) {
     }
     grid.innerHTML = data.map(piece => `
         <figure class="card" data-id="${escapeHtml(piece.id)}"
-        data-path="${escapeHtml(piece.storage_path || "")}">
+        data-path="${escapeHtml(piece.storage_path || "")}"
+        data-title="${escapeHtml(piece.title || "")}"
+        data-description="${escapeHtml(piece.description || "")}">
         <img src="${escapeHtml(piece.image_url)}" alt="${escapeHtml(piece.title)}" loading="lazy">
         <figcaption>${escapeHtml(piece.title)}</figcaption>
         <button class="delete-btn">Delete</button>
+        <button class="edit-btn">Edit</button>
         </figure>`).join("")
 }
 
@@ -214,6 +217,12 @@ document.addEventListener("click", async (e) => {
     // 1. Clicked the red Delete button
     if (e.target.classList.contains("delete-btn")) {
         await deletePortrait(card)
+        return
+    }
+
+    // 1b. Clicked the Edit button
+    if (e.target.classList.contains("edit-btn")) {
+        openEditModal(card)
         return
     }
 
@@ -251,3 +260,53 @@ async function deletePortrait(card) {
     // 3. Redraw the grids
     loadGrids()
 }
+
+
+// ---- Edit a portrait's title & description ----
+const editModal = document.getElementById("edit-modal")
+const editTitle = document.getElementById("edit-title")
+const editDescription = document.getElementById("edit-description")
+const editMsg = document.getElementById("edit-msg")
+let editingId = null
+
+function openEditModal(card) {
+    editingId = card.dataset.id
+    editTitle.value = card.dataset.title || ""
+    editDescription.value = card.dataset.description || ""
+    editMsg.textContent = ""
+    editModal.hidden = false
+    editTitle.focus()
+}
+
+function closeEditModal() {
+    editModal.hidden = true
+    editingId = null
+}
+
+// Cancel button and clicking the dark backdrop both close the modal
+document.getElementById("edit-cancel").addEventListener("click", closeEditModal)
+editModal.addEventListener("click", (e) => {
+    if (e.target === editModal) closeEditModal()
+})
+
+// Save: update the row's title & description, then refresh
+document.getElementById("edit-save").addEventListener("click", async () => {
+    if (!editingId) return
+
+    const title = editTitle.value.trim()
+    const description = editDescription.value.trim()
+    if (!title) { editMsg.textContent = "Title can't be empty."; return }
+
+    editMsg.textContent = "Saving..."
+    const upd = await db.from("portraits")
+        .update({ title: title, description: description })
+        .eq("id", editingId)
+
+    if (upd.error) {
+        editMsg.textContent = "Update failed: " + upd.error.message
+        return
+    }
+
+    closeEditModal()
+    loadGrids()
+})
