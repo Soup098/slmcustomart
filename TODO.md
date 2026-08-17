@@ -1,8 +1,8 @@
 
 -----TODO-----
+edit buttons on main hero to have pets and home gallery, and the order portrait *MVP*
 add links to facebook and instagram
 fix home images compressing in admin page
-edit buttons on main hero to have pets and home gallery, and the order portrait
 Add model pop ups with discription to image gallerys
 Add edit functionality to images in admin page
 Make it so that the images can be re-ordered on the gallery
