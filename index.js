@@ -1,17 +1,17 @@
 const images = [
-    "./images/hero-images/23-high-st.jpg",
-    "./images/hero-images/33-chesley-dr.jpg",
-    "./images/hero-images/58-varney-rd.jpg",
-    "./images/hero-images/394-timber-lane.jpg",
-    "./images/hero-images/arneil.jpg",
-    "./images/hero-images/boba.jpg",
-    "./images/hero-images/ellowyn.jpg",
-    "./images/hero-images/margie.jpg",
-    "./images/hero-images/mom-and-foal.jpg",
-    "./images/hero-images/obi.jpg",
-    "./images/hero-images/odonnel-house-barrington.jpg",
-    "./images/hero-images/sammi.jpg",
-    "./images/hero-images/shady-cropped.jpg"
+    "./images/hero-images/23-high-st.avif",
+    "./images/hero-images/33-chesley-dr.avif",
+    "./images/hero-images/58-varney-rd.avif",
+    "./images/hero-images/394-timber-lane.avif",
+    "./images/hero-images/arneil.avif",
+    "./images/hero-images/boba.avif",
+    "./images/hero-images/ellowyn.avif",
+    "./images/hero-images/margie.avif",
+    "./images/hero-images/mom-and-foal.avif",
+    "./images/hero-images/obi.avif",
+    "./images/hero-images/odonnel-house-barrington.avif",
+    "./images/hero-images/sammi.avif",
+    "./images/hero-images/shady-cropped.avif"
 ]
 
 const slide = document.querySelectorAll(".slide")

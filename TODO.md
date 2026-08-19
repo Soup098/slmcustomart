@@ -27,6 +27,7 @@ change main hero *DONE*
 change image container in admin page so it increases in size when more images are added *DONE*
 Houses water color, pets are not.*DONE*
 
+SEO
 
 
 
