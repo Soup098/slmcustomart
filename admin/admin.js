@@ -202,6 +202,7 @@ async function renderGrid(category, grid) {
     grid.innerHTML = data.map(piece => `
         <figure class="card" data-id="${escapeHtml(piece.id)}"
         data-path="${escapeHtml(piece.storage_path || "")}"
+        data-category="${escapeHtml(category)}"
         data-title="${escapeHtml(piece.title || "")}"
         data-description="${escapeHtml(piece.description || "")}">
         <img src="${escapeHtml(piece.image_url)}" alt="${escapeHtml(piece.title)}" loading="lazy">
@@ -262,17 +263,35 @@ async function deletePortrait(card) {
 }
 
 
-// ---- Edit a portrait's title & description ----
+// ---- Edit a portrait's title, description & (optionally) its photo ----
 const editModal = document.getElementById("edit-modal")
 const editTitle = document.getElementById("edit-title")
 const editDescription = document.getElementById("edit-description")
+const editPreview = document.getElementById("edit-preview")
+const editFile = document.getElementById("edit-file")
+const editChoose = document.getElementById("edit-choose")
+const editPhotoNote = document.getElementById("edit-photo-note")
 const editMsg = document.getElementById("edit-msg")
+
 let editingId = null
+let editingCategory = ""   // which folder a replacement photo goes in
+let editingOldPath = ""    // storage path of the current photo (to delete on swap)
+let editNewFile = null     // the replacement photo, if one was chosen
 
 function openEditModal(card) {
     editingId = card.dataset.id
+    editingCategory = card.dataset.category || ""
+    editingOldPath = card.dataset.path || ""
+    editNewFile = null
+    editFile.value = ""
+
     editTitle.value = card.dataset.title || ""
     editDescription.value = card.dataset.description || ""
+
+    const img = card.querySelector("img")
+    editPreview.src = img ? img.src : ""
+    editPhotoNote.textContent = "Leave as-is to keep the current photo."
+
     editMsg.textContent = ""
     editModal.hidden = false
     editTitle.focus()
@@ -281,7 +300,24 @@ function openEditModal(card) {
 function closeEditModal() {
     editModal.hidden = true
     editingId = null
+    editNewFile = null
+    editFile.value = ""
 }
+
+// Choose a replacement photo -> preview it (nothing is uploaded until Save)
+editChoose.addEventListener("click", () => editFile.click())
+editFile.addEventListener("change", () => {
+    const file = editFile.files[0]
+    if (!file) return
+    if (!file.type.startsWith("image/")) {
+        alert("Please choose an image file.")
+        editFile.value = ""
+        return
+    }
+    editNewFile = file
+    editPreview.src = URL.createObjectURL(file)
+    editPhotoNote.textContent = "New photo selected — click Save to apply."
+})
 
 // Cancel button and clicking the dark backdrop both close the modal
 document.getElementById("edit-cancel").addEventListener("click", closeEditModal)
@@ -289,7 +325,7 @@ editModal.addEventListener("click", (e) => {
     if (e.target === editModal) closeEditModal()
 })
 
-// Save: update the row's title & description, then refresh
+// Save: update title/description, swap the photo if a new one was chosen, then refresh
 document.getElementById("edit-save").addEventListener("click", async () => {
     if (!editingId) return
 
@@ -298,13 +334,36 @@ document.getElementById("edit-save").addEventListener("click", async () => {
     if (!title) { editMsg.textContent = "Title can't be empty."; return }
 
     editMsg.textContent = "Saving..."
-    const upd = await db.from("portraits")
-        .update({ title: title, description: description })
-        .eq("id", editingId)
+    const updates = { title: title, description: description }
 
+    // If the user picked a new photo, upload it first and point the row at it
+    if (editNewFile) {
+        const ext = editNewFile.name.split(".").pop().toLowerCase()
+        const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, "-").slice(0, 40)
+        const folder = editingCategory || "misc"
+        const newPath = folder + "/" + Date.now() + "-" + slug + "." + ext
+
+        const up = await db.storage.from(BUCKET)
+            .upload(newPath, editNewFile, { cacheControl: "3600", upsert: false })
+        if (up.error) {
+            editMsg.textContent = "Image upload failed: " + up.error.message
+            return
+        }
+        const { data: urlData } = db.storage.from(BUCKET).getPublicUrl(newPath)
+        updates.image_url = urlData.publicUrl
+        updates.storage_path = newPath
+    }
+
+    const upd = await db.from("portraits").update(updates).eq("id", editingId)
     if (upd.error) {
         editMsg.textContent = "Update failed: " + upd.error.message
         return
+    }
+
+    // The DB now points at the new photo — delete the old file so it isn't orphaned
+    if (editNewFile && editingOldPath) {
+        const rm = await db.storage.from(BUCKET).remove([editingOldPath])
+        if (rm.error) console.warn("Row updated but old file remains:", rm.error.message)
     }
 
     closeEditModal()

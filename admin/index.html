@@ -112,6 +112,13 @@
                     <span class="field-label">Short description</span>
                     <textarea id="edit-description"></textarea>
                 </label>
+                <div class="field">
+                    <span class="field-label">Photo</span>
+                    <img id="edit-preview" class="edit-preview" src="" alt="">
+                    <input id="edit-file" type="file" accept="image/*" hidden>
+                    <button type="button" id="edit-choose" class="ghost">Replace photo&hellip;</button>
+                    <span id="edit-photo-note" class="edit-photo-note">Leave as-is to keep the current photo.</span>
+                </div>
                 <div class="modal-actions">
                     <button type="button" id="edit-cancel" class="ghost">Cancel</button>
                     <button type="button" id="edit-save">Save changes</button>
